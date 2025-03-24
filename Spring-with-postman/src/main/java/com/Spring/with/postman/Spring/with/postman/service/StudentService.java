@@ -5,6 +5,8 @@ import com.Spring.with.postman.Spring.with.postman.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentService {
 
@@ -17,5 +19,44 @@ public class StudentService {
     {
         return studentRepo.save(student);
 
+    }
+
+    public Student getDetailsById(int id)
+    {
+        return studentRepo.findById(id).orElse(null);
+    }
+
+    //public List<Student> getAlldetails()
+    //{
+       // return studentRepo.findAll();
+   // }
+
+    public Student updateDetail(Student student)
+    {
+        Student updateStudent = studentRepo.findById(student.getId()).orElse(null);
+        if(updateStudent!=null)
+        {
+            updateStudent.setMarks(student.getMarks());
+            updateStudent.setName(student.getName());
+            return studentRepo.save(updateStudent);
+        }
+        return null;
+
+    }
+
+    public String deleteStudent(int id)
+    {
+        if(studentRepo.existsById(id)) {
+            studentRepo.deleteById(id);
+            return "deleted" + id;
+        }
+        else {
+            return "not their that id";
+        }
+    }
+
+    public List<Student>  saveListStudents(List<Student> students)
+    {
+        return studentRepo.saveAll(students);
     }
 }
