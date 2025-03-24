@@ -26,10 +26,10 @@ public class StudentService {
         return studentRepo.findById(id).orElse(null);
     }
 
-    //public List<Student> getAlldetails()
-    //{
-       // return studentRepo.findAll();
-   // }
+    public List<Student> getAlldetails()
+    {
+        return studentRepo.findAll();
+    }
 
     public Student updateDetail(Student student)
     {

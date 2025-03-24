@@ -14,7 +14,7 @@ public class Student {
 
     @Id
     @Column(name="ID")
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name="St_marks")
     private int marks;

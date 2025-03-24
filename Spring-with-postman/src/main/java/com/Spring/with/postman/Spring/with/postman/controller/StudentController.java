@@ -12,19 +12,19 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-//    @PostMapping("/addstudent")
+    @PostMapping("/addstudent")
 //    we are adding data and requestion from the json by using this request body will get all this
+//
+    public Student postDetails(@RequestBody Student student)
+    {
+        return studentService.saveDetails(student);
+    }
 
-//    public Student postDetails(@RequestBody Student student)
-//    {
-//        return studentService.saveDetails(student);
-//    }
-
-//    @GetMapping("/getstudent")
-//    public List<Student> getDetails()
-//    {
-//        return studentService.getAlldetails();
-//    }
+    @GetMapping("/getstudent")
+    public List<Student> getDetails()
+    {
+        return studentService.getAlldetails();
+    }
     @GetMapping("/getStudentById/{id}")
     public Student getDetailsById(@PathVariable int id)
     {
